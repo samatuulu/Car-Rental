@@ -20,7 +20,7 @@ class Car(models.Model):
     description = models.CharField(max_length=1500, verbose_name='Car description:')
     photo = models.ImageField(upload_to='car_images', verbose_name='Car photo:')
     transmission = models.CharField(max_length=50, choices=TRANSMISSION_CHOICES, default=TRANSMISSION_CHOICES[0][0], verbose_name='Transmission:')
-    car_category = models.ForeignKey('CarCategory', related_name='car', on_delete=models.CASCADE, verbose_name='Car category:')
+    car_category = models.ForeignKey('webapp.CarCategory', related_name='car', on_delete=models.CASCADE, verbose_name='Car category:')
     author = models.ForeignKey('auth.User', related_name='car',
                                on_delete=models.CASCADE, null=True, blank=True, verbose_name='Author:')
 
