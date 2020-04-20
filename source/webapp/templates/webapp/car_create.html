@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title } Add Car {% endblock}
+{% block content %}
+    <div class="container">
+        <h1>Add car</h1>
+        <form action="{% url 'car_create' %}" method="post" enctype="multipart/form-data">
+            {% include 'webapp/partial/form.html' %}
+            <input type="submit" value="Add car" class="btn btn-primary">
+            <a class="btn btn-secondary" href="{% url 'cars' %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

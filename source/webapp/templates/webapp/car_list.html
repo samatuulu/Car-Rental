@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    {% for car in cars %}
+    <div class="col-md-4"><br/>
+    <div class="card" style="width: 21rem;">
+        <img src="{{ car.photo.url }}" class="card-img-top" alt="{{ car.name }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ car.brand }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Transmission: {{ car.get_transmission_display }}</li>
+          <li class="list-group-item">Category: {{ car.car_category }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="{% url 'car_detail' car.pk %}" class="card-link">More info...</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div><br/>
+{% endblock %}
+

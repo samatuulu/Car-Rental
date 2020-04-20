@@ -1,0 +1,10 @@
+{% load widget_tweaks %}
+<label for="{{ field.id_label }}" class="mr-3">{{ field.label }}</label>
+{% if field|field_type == 'imagefiled' or field|field_type == 'filefield' or field|field_type == 'booleanfield' %}
+    {{ field }}
+{% else %}
+    {{ field|add_class:"form-control" }}
+{% endif %}
+{% for error in field.errors %}
+    <p class="text-danger">{{ error }}</p>
+{% endfor %}
