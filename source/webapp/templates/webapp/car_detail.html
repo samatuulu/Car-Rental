@@ -16,8 +16,10 @@
               <li class="list-group-item">Category: {{ car.car_category }}</li>
             </ul>
             <div class="card-body">
+              {% if request.user == car.author or request.user.is_superuser %}
               <a href="{% url 'car_update' car.pk %}" class="card-link">Update car</a>
               <a href="{% url 'car_delete' car.pk %}" class='card-link'>Delete car</a>
+              {% endif %}
             </div>
           </div>
         </div>

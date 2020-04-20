@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, UserPassesTestMixin
 from .models import Car
 
 from django.urls import reverse
@@ -12,7 +12,7 @@ class CarListView(ListView):
     context_object_name = 'cars'
 
 
-class CarCreateView(CreateView):
+class CarCreateView(PermissionRequiredMixin, CreateView):
     model = Car
     template_name = 'webapp/car_create.html'
     form_class = CarForm

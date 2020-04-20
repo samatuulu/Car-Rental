@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} {{ user_obj.username }} Detail| Car{% endblock %}
+
+{% block menu %}
+    <li><a class="nav-link" href="{% url 'accounts:user_update' user_obj.pk %}" tabindex="-1" aria-disabled="true">Update info</a></li>
+    <li><a class="nav-link" href="{% url 'accounts:user_change_password' user_obj.pk %}" tabindex="-1" aria-disabled="true">Change password</a></li>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Personal page</h1>
+        <p>User's name: {{ user_obj.username }}</p>
+        <p>Name: {{ user_obj.first_name }}</p>
+        <p>Last name: {{ user_obj.last_name }}</p>
+        <p>Email: {{ user_obj.email }}</p>
+    </div>
+{% endblock %}

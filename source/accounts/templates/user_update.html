@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Personal Page{% endblock %}
+
+{% block menu_links %}
+    <li><a class="nav-link" href="{% url "accounts:user_update" user_obj.pk %}" tabindex="-1" aria-disabled="true">Back</a></li>
+    <li><a class="nav-link" href="{% url 'accounts:user_change_password' user_obj.pk %}" tabindex="-1" aria-disabled="true">Change password</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Personal page</h1>
+
+        <form action="{% url "accounts:user_update" user_obj.pk %}" method="post">
+            {% include 'webapp/partial/form.html' %}
+            <input type="submit" value="Update info" class="btn btn-primary">
+            <a class="btn btn-secondary" href="{% url 'accounts:user_detail' user_obj.pk %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
